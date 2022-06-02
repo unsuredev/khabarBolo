@@ -1,14 +1,9 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Button from '@mui/material/Button';
-
-import AddIcon from '@mui/icons-material/Add';
+import Product from '../Product/Product'
 
 const foodArray = [
     {
@@ -179,39 +174,9 @@ const Food = () => {
             >
                 <Grid container spacing={5} alignItems="flex-end">
                     {foodArray.map((food) => (
-                        <Grid mb={3} item key={food.name} xs={12} sm={6} md={4}>
-                            <Card style={{borderRadius:"10px"}}>
-                                <CardContent>
-                                    <img
-                                        src={food.img}
-                                        data-rimg-scale="1"
-                                        height={220}
-                                        width={250}
-                                    />
-                                    <Typography variant="button" display="block" gutterBottom>
-                                        {food.name}
-                                    </Typography>
-                                    <Typography
-                                        component="li"
-                                        variant="subtitle1"
-                                        align="center"
-                                    >
-                                        {food.description}
-                                    </Typography>
-                                </CardContent>
-                                <CardActions style={{display:"flex", justifyContent:"space-evenly", padding:"2px"}} >
-                                    <Typography variant="h5" gutterBottom component="div">
-                                        &#8377;{food.price}
-                                    </Typography>
-                                    <Typography variant="overline" display="block" gutterBottom>
-                                        {food.time}
-                                    </Typography>
-                                    <Button style={{borderRadius:"30px", backgroundColor:"black" ,color:"white" }} variant="contained" startIcon={<AddIcon />}>
-                                        Add
-                                    </Button>
-                                </CardActions>
-                            </Card>
-                        </Grid>
+                                <Grid mb={3} item key={food.id} xs={12} sm={6} md={4}>
+                <Product id={food.id} name={food.name} img={food.img} description={food.description} price={food.price} time={food.time}/>
+                </Grid>
                     ))}
                 </Grid>
             </Container>

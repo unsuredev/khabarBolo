@@ -26,13 +26,15 @@ const FooterSection = () => {
         style={{ backgroundColor: "black", color: "white", minHeight: "35vh" }}
       >
         <Container maxWidth="md" style={{ marginTop: "5rem" }}>
-          <Grid container spacing={4} justifyContent="space-evenly">
-            <Grid item xs={6} sm={3} mt={2} p={4}>
+          <Grid container  justifyContent="space-evenly">
+            <Grid item xs={12} sm={4} >
               <img
-                src="/logo.png"
+                src="/fulllogo.png"
                 data-rimg-scale="1"
-                height={80}
-                width={220}
+                height={250}
+                width={310}
+                alt="logo"
+                style={{marginTop:"-50px"}}
               />
             </Grid>
             <Grid item xs={6} sm={3}>
@@ -51,12 +53,16 @@ const FooterSection = () => {
                 Legal & Support
               </Typography>
               <ul>
-                <li>Return Policy</li>
+                <li>
+                  <Link  href="/privacy" >
+                  Return Policy
+                  </Link>
+                 </li>
                 <li>Terms Of Use</li>
                 <li>Cancellation & Returns</li>
               </ul>
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={6} sm={2}>
               <Typography variant="h6" color="primary" gutterBottom>
                 Social
               </Typography>
