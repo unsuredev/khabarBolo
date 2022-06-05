@@ -15,10 +15,19 @@ import Container from '@mui/material/Container';
 import { toast } from "react-toastify";
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 import './register.css'
 
 const Register = () => {
 
+    const [value, setValue] = React.useState('female');
+
+    const handleChangeRadio = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue((event.target as HTMLInputElement).value);
+    };
     // google  response
     const responseGoogle = async (response: any) => {
         try {
@@ -26,14 +35,14 @@ const Register = () => {
             if (profileObj != null) {
                 const { email, googleId, name } = profileObj;
                 const result = await axios.post(BASE_URL + "user/add",
-                {
-                    "name": name,
-                    "login_type": "google",
-                    "email": email,
-                    //@ts-ignore
-                    "google_account_id":googleId
-                }
-            )
+                    {
+                        "name": name,
+                        "login_type": "google",
+                        "email": email,
+                        //@ts-ignore
+                        "google_account_id": googleId
+                    }
+                )
                 localStorage.setItem(
                     "access_token",
                     result.data.data.access_token
@@ -66,14 +75,16 @@ const Register = () => {
                             email: '',
                             mobile: '',
                             password: '',
+                            gender: 'male'
                         }}
                         validationSchema={Yup.object().shape({
                             name: Yup.string().max(25).required('Name is required'),
+                            gender: Yup.string().max(25).required('Gender is required'),
                             mobile: Yup.string()
-                            .required('Mobile is required')
-                            .matches(/^[0-9]+$/, "Must be only digits")
-                            .min(10, 'Must be exactly 10 digits')
-                            .max(10, 'Must be exactly 10 digits'), 
+                                .required('Mobile is required')
+                                .matches(/^[0-9]+$/, "Must be only digits")
+                                .min(10, 'Must be exactly 10 digits')
+                                .max(10, 'Must be exactly 10 digits'),
                             email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
                             password: Yup.string().min(6, 'Password must be combination of 6 digits with char').max(255).required('Password is required')
                         })}
@@ -86,7 +97,8 @@ const Register = () => {
                                         "email": values.email,
                                         "mobile": values.mobile.toString(),
                                         "fullName": values.name,
-                                        "password": values.password
+                                        "password": values.password,
+                                        "gender":value
                                     }
                                 )
                                 if (result.data.data && result.data != null) {
@@ -94,7 +106,7 @@ const Register = () => {
                                     localStorage.setItem("access_token", result.data.data.access_token)
                                     console.log("res", result.data)
                                 }
-                            } catch (error){
+                            } catch (error) {
                                 //@ts-ignore
                                 if (error.response.data.message == "Unable to Login user") {
                                     //@ts-ignore
@@ -166,6 +178,14 @@ const Register = () => {
                                                 type="number"
                                                 value={values.mobile}
                                             />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                        <FormControl component="fieldset">
+                                        <RadioGroup aria-label="gender" name="gender" value={value} onChange={handleChangeRadio} style={{ flexDirection: "row" }}>
+                                          <FormControlLabel value="female" control={<Radio />} label="Female" />
+                                          <FormControlLabel value="male" control={<Radio />} label="Male" />
+                                        </RadioGroup>
+                                      </FormControl>
                                         </Grid>
                                         <Grid item xs={12}>
                                             <TextField

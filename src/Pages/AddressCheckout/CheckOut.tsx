@@ -12,16 +12,15 @@ import AddressForm from "./Address";
 import PaymentForm from "../Payment/Payment";
 import Review from "../Review/Review";
 
-const steps = ["Shipping address", "Payment details", "Review your order"];
+const steps = ["Shipping address", "Review your order"];
 
 function getStepContent(step: number) {
     switch (step) {
         case 0:
             return <AddressForm />;
         case 1:
-            return <PaymentForm />;
-        case 2:
             return <Review />;
+
         default:
             throw new Error("Unknown step");
     }
@@ -60,8 +59,6 @@ export default function Checkout() {
                         {activeStep === steps.length ? (
                             <React.Fragment>
                                 <div style={{height:"30vh"}}>
-
-                           
                                 <Typography variant="h5" gutterBottom>
                                     Thank you for your order. 
                                 </Typography>
@@ -86,7 +83,7 @@ export default function Checkout() {
                                         onClick={handleNext}
                                         sx={{ mt: 3, ml: 1 }}
                                     >
-                                        {activeStep === steps.length - 1 ? "Place order" : "Next"}
+                                        {activeStep === steps.length  ? "Place order" : "Next"}
                                     </Button>
                                 </Box>
                             </React.Fragment>

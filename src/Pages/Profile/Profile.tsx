@@ -15,12 +15,29 @@ import axios from "axios";
 import { BASE_URL } from "../../Common/constant";
 import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 
+import TagFacesIcon from '@mui/icons-material/TagFaces';
+import FaceIcon from '@mui/icons-material/Face';
+import AddressForm from '../AddressCheckout/Address'
 const Profile = () => {
     const [user, setUser] = React.useState({
         name: "",
         email: "",
         mobile: "",
+        gender:""
+    });
+    const [addres, setAddress] = React.useState({
+        name: "",
+        email: "",
+        landmark: "",
+        location: "",
+        area: "",
+        additionalInfo: "",
+        mobile: "",
+        pin: "",
     });
 
     const getToken = () => {
@@ -57,8 +74,8 @@ const Profile = () => {
                 }
             );
             if (result && result.data != null) {
-                console.log("res", result);
                 setUser(result.data.data);
+                setAddress(result.data.data.address)
             } else {
                 toast.error(result.data.message);
             }
@@ -77,9 +94,13 @@ const Profile = () => {
                 }}
             >
                 <Container
-                    maxWidth="md"
-                    style={{ backgroundColor: "#fff3e0", padding: "15px" }}
+                    maxWidth="md" component="main"
                 >
+                    <Card  style={{ backgroundColor: "#fff3e0", textAlign:"left" }} >
+                        <CardContent>
+                    <div style={{textAlign:"center", justifyContent:"center"}}>
+                    {user.gender==="male"?<TagFacesIcon color="primary" fontSize="large"/>:<FaceIcon color="primary" fontSize="large" />}
+                    </div>
                     <Typography variant="h5" align="center" gutterBottom component="div">
                         {user.name}
                     </Typography>
@@ -89,17 +110,19 @@ const Profile = () => {
                     <Typography variant="h6" align="center" gutterBottom component="div">
                         Mobile:{user.mobile}
                     </Typography>
+                    </CardContent>
+                    </Card>
 
-                    <Stack
-                        sx={{ pt: 4 }}
-                        direction="row"
-                        spacing={2}
-                        justifyContent="center"
-                    >
-                        <Button variant="contained">Current orders:</Button>
-                        <Button variant="outlined">Past Orders</Button>
-                    </Stack>
+
                 </Container>
+                <Container
+                    maxWidth="md" component="main"
+                  
+                >
+
+                    <AddressForm />
+                </Container>
+
             </Box>
             <Box
                 sx={{
