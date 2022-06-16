@@ -2,14 +2,11 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { BASE_URL } from "../../Common/constant";
 import Button from "@mui/material/Button";
-import { Formik, Field, Form, FormikHelpers } from 'formik';
-import { useHistory } from "react-router-dom";
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Box from '@mui/material/Box';
 import jwt_decode from "jwt-decode";
@@ -17,10 +14,11 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Radio from '@mui/material/Radio';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
 
 export default function AddressForm() {
-    let history = useHistory();
-    
     const [show, setShow] = React.useState(false)
     const [addres, setAddress] = React.useState({
         name: "",
@@ -49,7 +47,7 @@ export default function AddressForm() {
 
     React.useEffect(() => {
         document.title = "KhabarBolo | Checkout ";
-        getUserAddres();
+        getUserAddres()
     }, []);
 
     const getUserAddres = async () => {
@@ -69,7 +67,6 @@ export default function AddressForm() {
             );
             if (result && result.data != null) {
                 setAddress(result.data.data)
-                console.log("res", result.data);
             }
         } catch (error) {
             console.log(error);
@@ -82,38 +79,62 @@ export default function AddressForm() {
         <React.Fragment>
             <Grid container style={{ margin: "auto", justifyContent: "center" }}>
                 <Grid xs={12} sm={12} md={12}>
-                    <Card  style={{ backgroundColor: "#fff3e0", textAlign:"left" }} >
+                    <Card style={{ textAlign: "left" }} >
                         <CardContent>
-                            <Typography variant="h5" component="div">
-                                {addres.name}          
-                            </Typography>
-                            <Typography  >
-                                {addres.email}
-                            </Typography>
-                            <Typography >
-                                {addres.mobile}
-                            </Typography>
-                            <Typography variant="body2">
-                                {addres.location}
-                            </Typography>
-                            <Typography >
-                                {addres.landmark}
-                            </Typography>
-                            <Typography variant="body2" sx={{ fontSize: 14 }} gutterBottom>
-                                {addres.area}
-                            </Typography>
-                            <Typography variant="body2">
-                                {addres.pin}
-                            </Typography>
+                            <List>
+                                <ListItem >
+                                    <Typography variant="h5" component="div">
+                                        Name : {addres.name}
+                                    </Typography>
+                                </ListItem>
+                                <Divider />
+                                <ListItem >
+                                    <Typography variant="body2">
+                                        Email :   {addres.email}
+                                    </Typography>
+                                </ListItem>
+                                <Divider />
+                                <ListItem >
+                                    <Typography variant="body2">
+                                        Mobile :    {addres.mobile}
+                                    </Typography>
+                                </ListItem>
+                                <Divider />
+                                <ListItem >
+                                    <Typography variant="body2">
+                                        Location :    {addres.location}
+                                    </Typography>
+                                </ListItem>
+                                <Divider />
+                                <ListItem >
+                                    <Typography variant="body2">
+                                        Landmark :    {addres.landmark}
+                                    </Typography>
+                                </ListItem>
+                                <Divider />
+                                <ListItem >
+                                    <Typography variant="body2">
+                                        Area :    {addres.area}
+                                    </Typography>
+                                </ListItem>
+                                <Divider />
+                                <ListItem >
+                                    <Typography variant="body2">
+                                        Pin :    {addres.pin}
+                                    </Typography>
+                                </ListItem>
+                                <Divider />
+                            </List>
+
                         </CardContent>
-                        
-                        <CardActions style={{justifyContent:"space-between"}}> 
+
+                        <CardActions style={{ justifyContent: "space-between" }}>
                             <Button size="small" variant="contained" onClick={() => setShow(!show)}> {show ? "close" : "update"}</Button>
-                            <Radio
-        checked={true}
-        value="a"
-        name="Default"
-      />
+                            Default Address<Radio
+                                checked={true}
+                                value="a"
+                                name="Default"
+                            />
                         </CardActions>
                     </Card>
                 </Grid>

@@ -2,12 +2,9 @@ import React from "react";
 import "./Footer.css";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import GlobalStyles from "@mui/material/GlobalStyles";
 import Container from "@mui/material/Container";
-import CssBaseline from '@mui/material/CssBaseline';
 import Copyright from "../../Components/Footer/copyright";
 
 const FooterSection = () => {
@@ -43,8 +40,13 @@ const FooterSection = () => {
               </Typography>
               <ul>
                 <li>About Us </li>
-                <li>Contact Us</li>
-                <li>Read Our Blog</li>
+                <li>
+                  <Link target="_blank" href="https://www.facebook.com/khabarBolo">  Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link target="_blank" href="https://www.facebook.com/khabarBolo">
+                  Read Our Post</Link></li>
                 <li>Join with Us</li>
               </ul>
             </Grid>
@@ -54,12 +56,27 @@ const FooterSection = () => {
               </Typography>
               <ul>
                 <li>
-                  <Link  href="/privacy" >
+                  <Link  target="_blank" href="/privacy" >
                   Return Policy
                   </Link>
-                 </li>
-                <li>Terms Of Use</li>
-                <li>Cancellation & Returns</li>
+                  </li>
+                <li>
+                  <Link target="_blank" href="/privacy">
+                  Terms Of Use
+                  </Link>
+                  </li>
+                  <li>
+                  <Link target="_blank" href="/privacy">
+                  Cancellation & Returns
+                  </Link>
+                  </li>
+                  <li>
+                  <Link target="_blank" href="/faq">
+                FAQ
+                  </Link>
+                  </li>
+            
+            
               </ul>
             </Grid>
             <Grid item xs={6} sm={2}>
@@ -67,8 +84,12 @@ const FooterSection = () => {
                 Social
               </Typography>
               <ul>
-                <li>YouTube</li>
-                <li>Facebook</li>
+              <li>
+              <Link target="_blank" href="https://www.facebook.com/khabarBolo">
+                Facebook
+                </Link>
+                </li>
+                <li>Instaghram</li>
                 <li>Twitter</li>
               </ul>
             </Grid>

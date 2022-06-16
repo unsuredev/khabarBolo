@@ -9,10 +9,13 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import AddressForm from "./Address";
-import PaymentForm from "../Payment/Payment";
-import Review from "../Review/Review";
+import Review from "../Review/ReviewOrder";
+import MakePayment from '../Payments/Payment'
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
 
-const steps = ["Shipping address", "Review your order"];
+const steps = ["Shipping address", "Review your order",'Payment'];
 
 function getStepContent(step: number) {
     switch (step) {
@@ -20,7 +23,6 @@ function getStepContent(step: number) {
             return <AddressForm />;
         case 1:
             return <Review />;
-
         default:
             throw new Error("Unknown step");
     }
@@ -36,6 +38,9 @@ export default function Checkout() {
     const handleBack = () => {
         setActiveStep(activeStep - 1);
     };
+
+
+
 
     return (
         <>
@@ -56,18 +61,24 @@ export default function Checkout() {
                         ))}
                     </Stepper>
                     <React.Fragment>
-                        {activeStep === steps.length ? (
+                        {activeStep === steps.length-1 ? (
                             <React.Fragment>
                                 <div style={{height:"30vh"}}>
-                                <Typography variant="h5" gutterBottom>
-                                    Thank you for your order. 
-                                </Typography>
-                                <Typography variant="subtitle1">
-                                    Your order number is #2001539. We have emailed your order
-                                    confirmation, and will send you an update when your order has
-                                    shipped.
-                                </Typography>
-                                </div>
+                                <List>
+                                <ListItem >
+                                    <Typography variant="h5" component="div">
+                                    We do not accept CASH ON DELIVERY
+                                    </Typography>
+                                </ListItem>
+                                <Divider />
+                                </List>
+                                <ListItem >
+                                    <Typography variant="body2">
+                                    If item not deliverd. we will refund the amount to your bank within 3 working days!.
+                                    </Typography>
+                                </ListItem>
+                                <MakePayment/>
+                                </div>                                
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
@@ -83,7 +94,7 @@ export default function Checkout() {
                                         onClick={handleNext}
                                         sx={{ mt: 3, ml: 1 }}
                                     >
-                                        {activeStep === steps.length  ? "Place order" : "Next"}
+                                        {activeStep === steps.length  ?'process to payment' : "Next"}
                                     </Button>
                                 </Box>
                             </React.Fragment>

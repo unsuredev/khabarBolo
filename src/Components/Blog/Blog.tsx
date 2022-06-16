@@ -1,18 +1,11 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
-import StarIcon from "@mui/icons-material/StarBorder";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import GlobalStyles from "@mui/material/GlobalStyles";
 import Container from "@mui/material/Container";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
@@ -65,9 +58,7 @@ const Blog = () => {
                     color="text.secondary"
                     component="p"
                 >
-                    Quickly build an effective pricing table for your potential customers
-                    with this layout. It&apos;s built with default MUI components with
-                    little customization.
+                  We delivery all kinds of food on time with great  from fastfood to cake and Biryani to meals
                 </Typography>
             </Container>
             {/* End hero unit */}
@@ -89,6 +80,7 @@ const Blog = () => {
                                         data-rimg-scale="1"
                                         height={220}
                                         width={250}
+                                        alt={blog.title}
                                     />
                                          <Typography
                                         variant="button" display="block" gutterBottom

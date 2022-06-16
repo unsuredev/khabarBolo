@@ -14,7 +14,6 @@ import { cartActions } from "../../Store/cart-slice";
 const CartItem = (props: any) => {
 
     const { id, name, price, img, quantity ,totalPrice} = props.food;
-    const itemList=useSelector((state:any)=>state.cart.itemList)
 
 
     const dispatch = useDispatch()
@@ -49,15 +48,19 @@ const CartItem = (props: any) => {
                                     <IconButton onClick={decrementCartItems} aria-label="delete" size="small">
                                         <RemoveIcon fontSize="inherit" />
                                     </IconButton>
+                                </TableCell>
+                                <TableCell>
                                     {quantity}
+                                </TableCell>
+                                <TableCell>
                                     <IconButton onClick={incrementCartItems} aria-label="delete" size="small">
                                         <AddIcon fontSize="inherit" />
                                     </IconButton>
                                 </TableCell>
-                                <TableCell align="right">&#x20B9; {totalPrice}</TableCell>
+                                <TableCell align="right"><span  > &#x20B9; {totalPrice}
+                                    </span></TableCell>
                             </TableRow>
                         </TableBody>
-
                     </Table>
                 </Grid>
             </Container>

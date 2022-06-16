@@ -22,7 +22,7 @@ const Banner = ({}) => (
                 .typeString("<h1>Unexpected guests ? <h1/>")
                 .pauseFor(200)
                 .deleteAll();
-                typewriter.typeString("<h1>Order Now !<h1/>")
+                typewriter.typeString("<h1>Bolo, KhabarBolo!<h1/>")
                 .start();
             }}></Typewriter>
           <p>Order food from favourite restaurants near you. <span style={{color:"#f58320"}}>@Hariharpara</span></p>

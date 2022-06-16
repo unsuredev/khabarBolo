@@ -2,14 +2,14 @@ import * as React from 'react';
 import { BrowserRouter as Router ,Switch,Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {  orange } from '@mui/material/colors';
+import {  green } from '@mui/material/colors';
+
 import Home from './Pages/Home/Home'
 import Login from './Pages/Login/Login'
 import Register from './Pages/Register/Register'
 import PrivacyPolicy from './Pages/Privacy/PrivacyPolicy'
 import Faq from './Pages/FAQ/Faq' 
 import Cart from './Pages/Cart/Cart'
-import { Provider } from 'react-redux';
-import store from './Store/index'
 import FooterSection from "./Components/Footer/Footer";
 import Navbar from "./Components/Navbar/Navbar";
 import Checkout from './Pages/AddressCheckout/CheckOut'
@@ -19,7 +19,9 @@ const outerTheme = createTheme({
   palette: {
     primary: {
       main: orange[500],
-    },
+    },secondary:{
+      main:green[500],
+    }
   },
 });
 

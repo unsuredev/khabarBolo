@@ -98,7 +98,7 @@ const SuggestedProduct = () => {
   return (
     <Container>
       <Grid container maxWidth="md" >
-        <Grid item xs={12} sm={12} md={12}>
+        <Grid item xs={12} sm={12} md={6}>
           <Carousel animation="slide" navButtonsAlwaysVisible>
             {foodArray.map((food: any, i: number) => (
               <Product

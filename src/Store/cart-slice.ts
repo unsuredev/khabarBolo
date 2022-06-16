@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { toast } from "react-toastify";
 const cartSlice = createSlice({
     name: "cart",
     initialState: {
-        itemList: [],
+        //@ts-ignore
+        itemList: localStorage.getItem("cartItems")? JSON.parse(localStorage.getItem("cartItems")): [],
         totalQuantity: 0,
         showCart: false,
     },
@@ -17,6 +18,7 @@ const cartSlice = createSlice({
             if (existingItem) {
                 existingItem.quantity++;
                 existingItem.totalPrice += newItem.price;
+                toast.info(`Increased ${newItem.name} quantity`);
             } else {
                 state.itemList.push({
                     //@ts-ignore
@@ -31,7 +33,9 @@ const cartSlice = createSlice({
                     name: newItem.name,
                 });
                 state.totalQuantity++;
+                toast.success(`${newItem.name} added into Cart!`);
             }
+            localStorage.setItem("cartItems", JSON.stringify(state.itemList));
         },
         removeFromCart(state, action) {
             const itemId = action.payload;
@@ -47,10 +51,18 @@ const cartSlice = createSlice({
                 existingItem.quantity--
                 existingItem.totalPrice-=existingItem.price
             }
+            toast.warn(`Item ${itemId} removed from cart !`);
+            localStorage.setItem("cartItems", JSON.stringify(state.itemList));
         },
         setShowCart(state) {
             state.showCart = !state.showCart;
         },
+        clearCart(state, action) {
+            console.log("remove called==>", state, action )
+            state.itemList = [];
+            localStorage.setItem("cartItems", JSON.stringify(state.itemList));
+            toast.error("Cart cleared!");
+          }
     },
 });
 

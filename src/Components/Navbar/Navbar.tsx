@@ -2,39 +2,27 @@ import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
 import Badge from '@mui/material/Badge';
-import IconButton from '@mui/material/IconButton';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import { Link } from "react-router-dom";
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import FastfoodIcon from '@mui/icons-material/Fastfood';
 import { cartActions } from "../../Store/cart-slice";
-import { useHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-
 import {  ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
-  let history = useHistory();
-  const quantity = useSelector((state: any) => state.cart.totalQuantity)
+  const cartItems:any = localStorage.getItem("cartItems")? localStorage.getItem('cartItems'):[]
+  const quantity=JSON.parse(cartItems).length
 
-
-  const auth = useSelector((state: any) => state.auth.isLogedIn)
-
+  useSelector((state: any) => state.cart.totalQuantity)
+  // const auth = useSelector((state: any) => state.auth.isLogedIn)
 
   React.useEffect(() => {
     document.title = "KhabarBolo | Profile  ";
-    findUserId();
   }, []);
 
   const findUserId = () => {
@@ -108,9 +96,7 @@ dispatch(cartActions.setShowCart())
           </div>:null
 
 }
-          <Button variant="outlined" href="/faq"  >
-            FAQ
-          </Button>
+
         </Box>
       </Toolbar>
     </Container>

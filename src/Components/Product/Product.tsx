@@ -6,15 +6,11 @@ import Typography from "@mui/material/Typography";
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import Chip from '@mui/material/Chip';
-import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
 import CircleIcon from '@mui/icons-material/Circle';
 import Tooltip from '@mui/material/Tooltip';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { cartActions } from '../../Store/cart-slice';
 import "react-toastify/dist/ReactToastify.css";
-
-import { toast } from "react-toastify";
 //@ts-ignore
 const Product = ({ id ,name, img, description, price, time }) => {
     const dispatch = useDispatch()
@@ -23,15 +19,19 @@ const Product = ({ id ,name, img, description, price, time }) => {
         id, name, img, description, price, time
         })
         )
-        toast.success("Item added into Cart!");
-
     }
+
+
+
+
+
+
     return (
         <Card style={{ borderRadius: "10px" }}>
             <Tooltip title="10% OFF INCLUDED">
-                <Chip label="10% OFF" color='primary' />
+                <Chip label="10% OFF" style={{color:"white"}} color='secondary' />
             </Tooltip>
-            <Chip label="Chip Outlined" variant="outlined" />
+            <Chip label="Free Delivery" variant="outlined" />
             <CardContent>
                 <img
                     src={img}

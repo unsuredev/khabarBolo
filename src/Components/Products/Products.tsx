@@ -154,7 +154,7 @@ const Food = () => {
                     color="text.primary"
                     gutterBottom
                 >
-                    Why You Chose Us!
+                   Discover the best food & drinks near to you!
                 </Typography>
                 <Typography
                     variant="h6"
@@ -162,9 +162,7 @@ const Food = () => {
                     color="text.secondary"
                     component="p"
                 >
-                    Quickly build an effective pricing table for your potential
-                    customers with this layout. It&apos;s built with default MUI
-                    components with little customization.
+                   Choose below listed food items, place order and set back & relax, we will delivery your food to door on time.
                 </Typography>
             </Container>
             <Container
