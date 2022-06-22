@@ -36,9 +36,9 @@ const Login = () => {
     const dispatch= useDispatch()
 
 
-    const handleSubmit=(e:any)=>{
-  
-    }
+    React.useEffect(() => {
+        document.title = "KhabarBolo | Login ";
+      }, []);
 
 
     // google  response
@@ -120,20 +120,23 @@ const Login = () => {
                     touched,
                     values
                 }) => (
-                    <div>
+                    <div style={{marginTop:"12rem"}}>
                     <Form >
                         <Box
                             sx={{
-                                marginTop: 4,
+                                marginTop: 3,
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
                             }}
                         >
  
-      <Typography variant="h4" gutterBottom component="div">
-      Login to continue
+ <div style={{paddingTop:"4rem"}}>
+ <Typography variant="h5" gutterBottom component="div">
+    Welcomeback!, Login to continue
       </Typography>
+ </div>
+
                             <Box  sx={{ mt: 1 }} style={{ marginTop: "5rem" }}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
@@ -219,13 +222,13 @@ const Login = () => {
                 )}
             </Formik>
             <Grid container>
-                <Grid item xs>
-                    <Link href="/reset" variant="body2">
+                <Grid item xs m={1}>
+                    <Link style={{color:"black"}} href="/reset" variant="body2">
                         Forgot password?
                     </Link>
                 </Grid>
-                <Grid item>
-                    <Link href="/register" variant="body2">
+                <Grid item   m={1}>
+                    <Link style={{color:"black"}} href="/register" variant="body2">
                         {"Don't have an account? Sign Up"}
                     </Link>
                 </Grid>

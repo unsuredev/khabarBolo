@@ -57,7 +57,8 @@ const Register = () => {
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <Box
+            <Box 
+            style={{marginTop:"12rem"}}
                 sx={{
                     marginTop: 8,
                     display: 'flex',
@@ -131,7 +132,7 @@ const Register = () => {
                         }) => (
                             <div>
                                 <Form onSubmit={handleSubmit}>
-                                    <Grid container spacing={2}>
+                                    <Grid container spacing={1}>
                                         <Grid item xs={12} >
                                             <TextField
                                                 error={Boolean(touched.name && errors.name)}
@@ -274,6 +275,37 @@ const Register = () => {
                     </Link>
                 </Grid>
             </Grid>  <br></br>
+            <Grid item xs={12} md={12} >
+                <GoogleLogin
+                    clientId={GCLIENT_ID}
+                    buttonText="Continue with Google"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    render={(props: any) => (
+                        <Button
+                            className="socialButton"
+                            onClick={props.onClick}
+                            variant="outlined"
+                            fullWidth
+
+                        >
+                            <img
+                                className="btn-logo"
+                                src="/blog/Google@3x.png"
+                                alt="GLogo"
+                            />
+                            <Typography
+                                variant="button"
+                                display="block"
+                                className="FB"
+                                gutterBottom
+                            >
+                                &nbsp;  Continue With Google
+                            </Typography>
+                        </Button>
+                    )}
+                />
+            </Grid>
         </Container>
     );
 }

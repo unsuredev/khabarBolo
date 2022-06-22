@@ -33,6 +33,12 @@ const FooterSection = () => {
                 alt="logo"
                 style={{marginTop:"-50px"}}
               />
+              <div   style={{marginTop:"-20px", textAlign:"center"}}>
+              <Typography variant="caption" display="block" gutterBottom>Designed & developed by 
+                <Link target="_blank" href="https://www.facebook.com/unsuredev"> Jamal
+                  </Link>
+              </Typography>
+              </div>
             </Grid>
             <Grid item xs={6} sm={3}>
               <Typography variant="h6" color="primary" gutterBottom>

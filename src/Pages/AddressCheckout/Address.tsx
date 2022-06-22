@@ -45,10 +45,10 @@ export default function AddressForm() {
         return user_id
     }
 
-    React.useEffect(() => {
-        document.title = "KhabarBolo | Checkout ";
-        getUserAddres()
-    }, []);
+    // React.useEffect(() => {
+    //     document.title = "KhabarBolo | Checkout ";
+    //     getUserAddres()
+    // }, []);
 
     const getUserAddres = async () => {
         try {

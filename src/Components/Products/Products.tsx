@@ -162,7 +162,7 @@ const Food = () => {
                     color="text.secondary"
                     component="p"
                 >
-                   Choose below listed food items, place order and set back & relax, we will delivery your food to door on time.
+                   Place order and set back & relax, we will delivery your food to door on time.
                 </Typography>
             </Container>
             <Container

@@ -51,14 +51,14 @@ const cartSlice = createSlice({
                 existingItem.quantity--
                 existingItem.totalPrice-=existingItem.price
             }
-            toast.warn(`Item ${itemId} removed from cart !`);
             localStorage.setItem("cartItems", JSON.stringify(state.itemList));
+            toast.warn(`Item ${itemId} removed from cart !`);
+
         },
         setShowCart(state) {
             state.showCart = !state.showCart;
         },
         clearCart(state, action) {
-            console.log("remove called==>", state, action )
             state.itemList = [];
             localStorage.setItem("cartItems", JSON.stringify(state.itemList));
             toast.error("Cart cleared!");

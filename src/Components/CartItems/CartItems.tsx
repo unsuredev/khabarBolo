@@ -53,7 +53,7 @@ const CartItems = (props: any) => {
         component="main"
         sx={{ mt: 8, mb: 2 }}
         maxWidth="md"
-        style={{ marginTop: "7rem" }}
+        style={{ marginTop: "10rem" }}
       >
         <Typography variant="h5" component="h2" gutterBottom>
           Your Carts :
@@ -96,6 +96,8 @@ const CartItems = (props: any) => {
           </div>
         )}
 
+{itemLists.length > 0 && (
+  <div>
         <div style={{ textAlign: "right" }}>
           Subtotal :&#x20B9; <b>{grandTotal}</b>
         </div>
@@ -105,8 +107,9 @@ const CartItems = (props: any) => {
         <Button variant="outlined" onClick={() => handleClearCart(100)}>
           clear Cart
         </Button>
+        </div>)}
         {itemLists.length === 0 && (
-          <Grid container>
+          <Grid container style={{marginTop:"10rem"}}>
             <Grid item xs={12} md={12}>
               <Typography variant="h6" component="h4" gutterBottom>
                 No Item

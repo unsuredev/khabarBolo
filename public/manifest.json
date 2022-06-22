@@ -1,19 +1,19 @@
 {
   "short_name": "KhabarBolo ",
-  "name": "A food deivery app",
+  "name": "A food deivery web app @Hariharpara",
   "icons": [
     {
-      "src": "logo.png",
+      "src": "fulllogo.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo.png",
+      "src": "fulllogo.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo.png",
+      "src": "fulllogo.png",
       "type": "image/png",
       "sizes": "512x512"
     }

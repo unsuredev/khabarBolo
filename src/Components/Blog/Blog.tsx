@@ -8,6 +8,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import { MessengerChat } from "react-messenger-chat-plugin";
 
 const blogs = [
     {
@@ -52,14 +53,18 @@ const Blog = () => {
                 >
                     Why You Chose Us!
                 </Typography>
+                <div style={{padding:"30px", textAlign: "justify"
+}}>
                 <Typography
                     variant="h6"
-                    align="center"
+                   
                     color="text.secondary"
                     component="p"
                 >
-                  We delivery all kinds of food on time with great  from fastfood to cake and Biryani to meals
+                  We delivery all kinds of food available near to you in hygienic way and on time.
                 </Typography>
+                </div>
+            
             </Container>
             {/* End hero unit */}
             <Container maxWidth="lg" component="main" style={{justifyContent:"center", textAlign:"center"}}>
@@ -106,6 +111,34 @@ const Blog = () => {
                         </Grid>
                     ))}
                 </Grid>
+                <MessengerChat
+    pageId="104337575635403"
+    language="en_US"
+    themeColor={"#000000"}
+    bottomSpacing={300}
+    loggedInGreeting="loggedInGreeting"
+    loggedOutGreeting="loggedOutGreeting"
+    greetingDialogDisplay={"show"}
+    debugMode={true}
+    onMessengerShow={() => {
+      console.log("onMessengerShow");
+    }}
+    onMessengerHide={() => {
+      console.log("onMessengerHide");
+    }}
+    onMessengerDialogShow={() => {
+      console.log("onMessengerDialogShow");
+    }}
+    onMessengerDialogHide={() => {
+      console.log("onMessengerDialogHide");
+    }}
+    onMessengerMounted={() => {
+      console.log("onMessengerMounted");
+    }}
+    onMessengerLoad={() => {
+      console.log("onMessengerLoad");
+    }}
+  />
             </Container>
         </React.Fragment>
     );

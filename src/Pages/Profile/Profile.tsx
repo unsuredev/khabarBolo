@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import { useHistory } from "react-router-dom";
 
 import TagFacesIcon from '@mui/icons-material/TagFaces';
 import FaceIcon from '@mui/icons-material/Face';
@@ -39,6 +40,7 @@ const Profile = () => {
         mobile: "",
         pin: "",
     });
+    let history = useHistory();
 
     const getToken = () => {
         //@ts-ignore
@@ -52,10 +54,12 @@ const Profile = () => {
 
     const findUserId = () => {
         let token: any = localStorage.getItem("access_token");
+        if(token){
         var decoded = jwt_decode(token);
+        }
         //@ts-ignore
         let { user_id } = decoded;
-        return user_id;
+        return user_id?user_id:undefined
     };
 
     const fetchUser = async () => {
@@ -74,13 +78,18 @@ const Profile = () => {
                 }
             );
             if (result && result.data != null) {
+
                 setUser(result.data.data);
                 setAddress(result.data.data.address)
             } else {
                 toast.error(result.data.message);
+                history.push("/login");
+
             }
         } catch (error) {
             console.log(error);
+            history.push("/login");
+
             toast.error("unable to find user!");
         }
     };
@@ -94,7 +103,7 @@ const Profile = () => {
                 }}
             >
                 <Container
-                    maxWidth="md" component="main"
+                    maxWidth="md" component="main" style={{marginTop:"10rem"}}
                 >
                     <Card  style={{ backgroundColor: "#fff3e0", textAlign:"left" }} >
                         <CardContent>

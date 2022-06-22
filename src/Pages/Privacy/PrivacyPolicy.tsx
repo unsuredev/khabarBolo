@@ -8,6 +8,10 @@ import Container from '@mui/material/Container';
 export default function PrivacyPolicy() {
 
 
+
+    React.useEffect(() => {
+        document.title = "KhabarBolo | Privacy Policy";
+      }, []);
     const PolicyArray = [
         "  We use the information we collect from and about you for a variety of purposes, including to:",
         "Process and respond to your queries",

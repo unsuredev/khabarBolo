@@ -6,7 +6,7 @@ import { BASE_URL } from "../../Common/constant";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
-
+import { useHistory } from "react-router-dom";
 
 
 const MakePayment = (props: any) => {
@@ -14,6 +14,7 @@ const MakePayment = (props: any) => {
     // const [data, setData] = React.useState({
     //     payment_token: queryParams.get("payment_token"),
     // });
+    let history = useHistory();
 
     const [user, setUser] = React.useState({
         name: "",
@@ -21,17 +22,25 @@ const MakePayment = (props: any) => {
         mobile: "",
         gender:""
     });
-    React.useEffect(() => {
-        document.title = "KhabarBolo | Profile  ";
-        fetchUser();
-    }, []);
+    // React.useEffect(() => {
+    //     document.title = "KhabarBolo | Payment  ";
+    //     fetchUser();
+    // }, []);
     const findUserId = () => {
         let token: any = localStorage.getItem("access_token");
         var decoded = jwt_decode(token);
+        let user_id
+        if(decoded){
         //@ts-ignore
         let { user_id } = decoded;
+        user_id=user_id
+        }else{
+            user_id=undefined
+        }
         return user_id;
     };
+
+
     const getToken = () => {
         //@ts-ignore
         return localStorage.getItem("access_token");
@@ -57,14 +66,14 @@ const MakePayment = (props: any) => {
             );
             if (result && result.data != null) {
                 console.log("user", result.data.data)
-
                 setUser(result.data.data);
-                console.log("user", user)
+                history.push("/login");
+
             } else {
                 toast.error(result.data.message);
             }
         } catch (error) {
-            console.log(error);
+            history.push("/login");
             toast.error("unable to find user!");
         }
     };
@@ -73,16 +82,17 @@ const MakePayment = (props: any) => {
         const _window = window as any
         var rzp1 = new _window.Razorpay(
             {
-
                 key: RAZOR_PAY_KEY,
+                amount:200,
                 name: "",
-                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD2qR26Z3hFbsooydMRa0_FUhIIUfqGmjRA7YkHP24TCw4L1qEBiZTHiff_XZV0n4U8Ek&usqp=CAU', // need logo
+                image: '/static/onlyLogo.png', // need logo
+                //order_id: "order_Jj5fcjJsWxRTCJ", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                 handler: function (response: any) {
-                    // console.log("id", response.razorpay_Monthly_id);
-                    // console.log(response.razorpay_order_id)
-                    // console.log(response.razorpay_signature)
+                    console.log("response", response);
+                    console.log(response.razorpay_order_id)
+                    console.log(response.razorpay_signature)
                 },
-                description: "KHABARBOLO",
+                description: "KhabarBolo-Hariharpara",
                 prefill: {
                     name: user.name,
                     contact:user.mobile,
@@ -111,7 +121,7 @@ const MakePayment = (props: any) => {
             }
         )
         rzp1.open();
-        rzp1.on('Monthly.failed', function (response: any) {
+        rzp1.on('Payment failed', function (response: any) {
             console.log("response", response)
         }
         )
@@ -152,7 +162,7 @@ const MakePayment = (props: any) => {
     return (
         <React.Fragment>
             <Grid container>
-                <Grid item xs={12} sm={12} md={12}>
+                <Grid item xs={12} sm={12} md={12} >
                     <div className="table" style={{ color: "white", paddingTop: "2rem" }}>
                         <div style={{ margin: "auto", justifyContent: "center", alignItems: "center", textAlign: "center", paddingTop: "2rem"}}>
                             <Button variant='contained' style={{color:"white", letterSpacing: "4.5px", width: "275px", borderRadius: "25px" }} onClick={() => openPayModal()}>

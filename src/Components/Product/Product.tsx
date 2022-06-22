@@ -11,6 +11,11 @@ import Tooltip from '@mui/material/Tooltip';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../../Store/cart-slice';
 import "react-toastify/dist/ReactToastify.css";
+
+
+
+
+
 //@ts-ignore
 const Product = ({ id ,name, img, description, price, time }) => {
     const dispatch = useDispatch()
@@ -20,9 +25,6 @@ const Product = ({ id ,name, img, description, price, time }) => {
         })
         )
     }
-
-
-
 
 
 
@@ -65,10 +67,8 @@ const Product = ({ id ,name, img, description, price, time }) => {
                 <Button onClick={addTocart} style={{ borderRadius: "30px",  color: "white" }} variant="contained" startIcon={<AddIcon />}>
                     Add
                 </Button>
-
             </CardActions>
         </Card>
-
     )
 }
 

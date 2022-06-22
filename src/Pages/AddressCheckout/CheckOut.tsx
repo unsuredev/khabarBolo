@@ -39,13 +39,16 @@ export default function Checkout() {
         setActiveStep(activeStep - 1);
     };
 
+    React.useEffect(() => {
+        document.title = "KhabarBolo | Check Out  ";
+      }, []);
 
 
 
     return (
         <>
             <CssBaseline />
-            <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+            <Container component="main" maxWidth="sm" sx={{ mb: 4 }} style={{ marginTop:"2rem" , paddingTop:"10rem"}}>
                 <Paper
                     variant="outlined"
                     sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
@@ -74,7 +77,7 @@ export default function Checkout() {
                                 </List>
                                 <ListItem >
                                     <Typography variant="body2">
-                                    If item not deliverd. we will refund the amount to your bank within 3 working days!.
+                                    If amount deducted and item not deliverd. we will refund the amount to your bank within 3 working days!.
                                     </Typography>
                                 </ListItem>
                                 <MakePayment/>

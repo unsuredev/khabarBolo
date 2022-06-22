@@ -1,8 +1,8 @@
 export  const BASE_URL =
     process.env.BASE_URL ||     
- //"https://hariharpara.hpgas.jamanenterprise.in/v1/"
+ "https://web.server.khabarbolo.com/v1/"
 
-"http://localhost:3001/v1/"
+//"http://localhost:3001/v1/"
 
 export const GCLIENT_ID =
   process.env.REACT_APP_GCLIENT_ID ||
@@ -16,7 +16,7 @@ export const DEFAULT_CLIENT_ID =
   "6e8fd70a-78c2-44f4-a85f-014d53de9cb8";
 
 export const RAZOR_PAY_KEY =
-  process.env.REACT_APP_RAZOR_PAY_KEY || "rzp_test_pTnkuXD1GlMDwX";
+  process.env.REACT_APP_RAZOR_PAY_KEY || "rzp_live_8BM8Dbemmg0UnO";
   //"rzp_live_8BM8Dbemmg0UnO";
 //"rzp_test_pTnkuXD1GlMDwX"
 

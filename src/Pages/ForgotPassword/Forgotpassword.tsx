@@ -15,6 +15,10 @@ import { authActions } from '../../Store/auth-slice';
 const ForgotPassword = () => {
 
 
+    React.useEffect(() => {
+        document.title = "KhabarBolo | Forgot";
+      }, []);
+
     return (
         <Container component="main" maxWidth="xs" style={{height:"60vh"}}>
             <CssBaseline />

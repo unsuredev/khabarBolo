@@ -13,6 +13,11 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 export default function Faq() {
 
 
+
+    React.useEffect(() => {
+        document.title = "KhabarBolo | FAQ";
+      }, []);
+
     const FaqArray = [
         {
             question: " What is KhabarBolo Customer Care Number?",
@@ -66,6 +71,7 @@ export default function Faq() {
                     flexDirection: 'column',
                     minHeight: '100vh',
                 }}
+                style={{marginTop:"15rem"}}
             >
                 <CssBaseline />
                 <Container component="main" sx={{ mt: 8, mb: 2 }} maxWidth="md">
