@@ -8,7 +8,6 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { MessengerChat } from "react-messenger-chat-plugin";
 
 const blogs = [
     {
@@ -111,34 +110,7 @@ const Blog = () => {
                         </Grid>
                     ))}
                 </Grid>
-                <MessengerChat
-    pageId="104337575635403"
-    language="en_US"
-    themeColor={"#000000"}
-    bottomSpacing={300}
-    loggedInGreeting="loggedInGreeting"
-    loggedOutGreeting="loggedOutGreeting"
-    greetingDialogDisplay={"show"}
-    debugMode={true}
-    onMessengerShow={() => {
-      console.log("onMessengerShow");
-    }}
-    onMessengerHide={() => {
-      console.log("onMessengerHide");
-    }}
-    onMessengerDialogShow={() => {
-      console.log("onMessengerDialogShow");
-    }}
-    onMessengerDialogHide={() => {
-      console.log("onMessengerDialogHide");
-    }}
-    onMessengerMounted={() => {
-      console.log("onMessengerMounted");
-    }}
-    onMessengerLoad={() => {
-      console.log("onMessengerLoad");
-    }}
-  />
+
             </Container>
         </React.Fragment>
     );

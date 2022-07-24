@@ -56,13 +56,15 @@ const CartItems = (props: any) => {
         style={{ marginTop: "10rem" }}
       >
         <Typography variant="h5" component="h2" gutterBottom>
-          Your Carts :
+          Your Cart :
         </Typography>
 
         {itemLists.length > 0 && (
           <div>
-            <TableContainer component={Paper}>
-              <Table aria-label="simple table">
+                            <Grid item xs={12} md={12}>
+
+            <TableContainer >
+              <Table aria-label="simple table" size="small">
                 <TableHead
                   style={{ backgroundColor: "#ff9800", color: "white" }}
                 >
@@ -88,9 +90,13 @@ const CartItems = (props: any) => {
 
               </Table>
             </TableContainer>
+            </Grid>
             {itemLists.map((food: any) => (
               <div key={food.id}>
+                                <TableContainer >
+
                 <CartItem food={food} />
+                </TableContainer>
               </div>
             ))}
           </div>
@@ -112,7 +118,7 @@ const CartItems = (props: any) => {
           <Grid container style={{marginTop:"10rem"}}>
             <Grid item xs={12} md={12}>
               <Typography variant="h6" component="h4" gutterBottom>
-                No Item
+                Please add item to your cart!
               </Typography>
               <img
                 src="/blog/nocart.png"
@@ -124,7 +130,7 @@ const CartItems = (props: any) => {
             </Grid>
           </Grid>
         )}
-        <div style={{ marginTop: "10rem" }}></div>
+        <div style={{ marginTop: "5rem" }}></div>
         <SuggestedProduct />
       </Container>
     </Box>

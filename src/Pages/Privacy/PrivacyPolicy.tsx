@@ -35,7 +35,7 @@ export default function PrivacyPolicy() {
 
     return (
         <>
-            <Box
+            <Box style={{marginTop:"10rem"}}
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',

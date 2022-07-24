@@ -15,6 +15,12 @@ import Navbar from "./Components/Navbar/Navbar";
 import Checkout from './Pages/AddressCheckout/CheckOut'
 import Profile from './Pages/Profile/Profile'
 import ForgotPassword from './Pages/ForgotPassword/Forgotpassword'
+
+import { firebaseConfig } from './Common/config';
+import { initializeApp } from "firebase/app";
+initializeApp(firebaseConfig)
+
+
 const outerTheme = createTheme({
   palette: {
     primary: {
@@ -24,6 +30,8 @@ const outerTheme = createTheme({
     }
   },
 });
+
+
 
 
 const App = () => {

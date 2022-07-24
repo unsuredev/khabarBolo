@@ -89,6 +89,8 @@ const Navbar = () => {
               },
           }
             )
+            localStorage.clear();
+
         if (result.data && result.data != null) {
           toast.error(result.data.message);
           localStorage.clear();
@@ -159,7 +161,7 @@ const Navbar = () => {
               </MenuItem>
             </Menu>
           </Box>
-          <div style={{ marginTop: "1rem" }}>
+          <div style={{ marginTop: "1rem" }}  >
           <Tooltip title="Wea are waiting for orders!">
             <img
               src="/onlyLogo.png"
@@ -167,6 +169,7 @@ const Navbar = () => {
               height={100}
               width={120}
               alt="logo"
+              
             />
             </Tooltip>
           </div>

@@ -19,39 +19,18 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import './register.css'
+import { useHistory } from "react-router-dom"
+ import './register.css'
 
 const Register = () => {
-
+    let history = useHistory();
     const [value, setValue] = React.useState('female');
-
     const handleChangeRadio = (event: React.ChangeEvent<HTMLInputElement>) => {
       setValue((event.target as HTMLInputElement).value);
     };
-    // google  response
-    const responseGoogle = async (response: any) => {
-        try {
-            const profileObj = response?.profileObj;
-            if (profileObj != null) {
-                const { email, googleId, name } = profileObj;
-                const result = await axios.post(BASE_URL + "user/add",
-                    {
-                        "name": name,
-                        "login_type": "google",
-                        "email": email,
-                        //@ts-ignore
-                        "google_account_id": googleId
-                    }
-                )
-                localStorage.setItem(
-                    "access_token",
-                    result.data.data.access_token
-                );
-            }
-        } catch (error) {
-            console.log("error", error)
-        }
-    };
+
+
+
 
 
     return (
@@ -105,6 +84,8 @@ const Register = () => {
                                 if (result.data.data && result.data != null) {
                                     toast.success("Sign up Successfull");
                                     localStorage.setItem("access_token", result.data.data.access_token)
+                                    history.push('/')
+                                    window.location.reload()
                                     console.log("res", result.data)
                                 }
                             } catch (error) {
@@ -209,7 +190,6 @@ const Register = () => {
                                                 By clicking on enter, you accept the
                                                 <Link rel="stylesheet" href="/privacy" >&nbsp; terms and conditions</Link>
                                             </Typography>
-
                                         </Grid>
                                     </Grid>
                                     <Button
@@ -226,47 +206,10 @@ const Register = () => {
                             </div>
                         )}
                     </Formik>
-                    <Grid container justifyContent="center">
-                        <Grid item>
-
-                            <Typography variant="body1" gutterBottom >
-                                OR
-                            </Typography>
-                        </Grid>
-                    </Grid>
+   
                 </Box>
             </Box>
-            <Grid item xs={12} md={12} >
-                <GoogleLogin
-                    clientId={GCLIENT_ID}
-                    buttonText="Continue with Google"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    render={(props: any) => (
-                        <Button
-                            className="socialButton"
-                            onClick={props.onClick}
-                            variant="outlined"
-                            fullWidth
-
-                        >
-                            <img
-                                className="btn-logo"
-                                src="/blog/Google@3x.png"
-                                alt="GLogo"
-                            />
-                            <Typography
-                                variant="button"
-                                display="block"
-                                className="FB"
-                                gutterBottom
-                            >
-                                &nbsp;  Continue With Google
-                            </Typography>
-                        </Button>
-                    )}
-                />
-            </Grid>
+          
             <br></br>
             <Grid container justifyContent="flex-end">
                 <Grid item>
@@ -275,37 +218,7 @@ const Register = () => {
                     </Link>
                 </Grid>
             </Grid>  <br></br>
-            <Grid item xs={12} md={12} >
-                <GoogleLogin
-                    clientId={GCLIENT_ID}
-                    buttonText="Continue with Google"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    render={(props: any) => (
-                        <Button
-                            className="socialButton"
-                            onClick={props.onClick}
-                            variant="outlined"
-                            fullWidth
 
-                        >
-                            <img
-                                className="btn-logo"
-                                src="/blog/Google@3x.png"
-                                alt="GLogo"
-                            />
-                            <Typography
-                                variant="button"
-                                display="block"
-                                className="FB"
-                                gutterBottom
-                            >
-                                &nbsp;  Continue With Google
-                            </Typography>
-                        </Button>
-                    )}
-                />
-            </Grid>
         </Container>
     );
 }

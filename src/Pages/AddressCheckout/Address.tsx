@@ -30,6 +30,8 @@ export default function AddressForm() {
         mobile: "",
         pin: "",
     });
+    const [showAddress, setShowAddress] = React.useState(false)
+
 
     const getToken = () => {
         //@ts-ignore
@@ -45,10 +47,10 @@ export default function AddressForm() {
         return user_id
     }
 
-    // React.useEffect(() => {
-    //     document.title = "KhabarBolo | Checkout ";
-    //     getUserAddres()
-    // }, []);
+    React.useEffect(() => {
+        document.title = "KhabarBolo | Checkout ";
+        getUserAddres()
+    }, []);
 
     const getUserAddres = async () => {
         try {
@@ -67,10 +69,13 @@ export default function AddressForm() {
             );
             if (result && result.data != null) {
                 setAddress(result.data.data)
+                setShowAddress(true)
+            }
+            else{
+                setShowAddress(false)
             }
         } catch (error) {
             console.log(error);
-            toast.error("unable to find user!");
         }
     };
 
@@ -78,12 +83,18 @@ export default function AddressForm() {
     return (
         <React.Fragment>
             <Grid container style={{ margin: "auto", justifyContent: "center" }}>
+                
                 <Grid xs={12} sm={12} md={12}>
+                {addres.name &&(
                     <Card style={{ textAlign: "left" }} >
+                    <Typography variant="body2" style={{ paddingLeft: "2rem", paddingTop:"1rem" }}>
+                            Addres Details
+                                    </Typography>
                         <CardContent>
                             <List>
                                 <ListItem >
-                                    <Typography variant="h5" component="div">
+                                    
+                                    <Typography variant="h6" component="div">
                                         Name : {addres.name}
                                     </Typography>
                                 </ListItem>
@@ -136,7 +147,15 @@ export default function AddressForm() {
                                 name="Default"
                             />
                         </CardActions>
-                    </Card>
+                    </Card>)}
+                    {!addres.name &&(
+                        <Card>
+                             <CardContent >
+                             <Button style={{color:"white", textAlign:"center"}} size="medium" variant="contained" onClick={() => setShow(!show)}> Add New address</Button>
+
+                             </CardContent>
+                        </Card>
+                    )}
                 </Grid>
             </Grid>
 
@@ -199,7 +218,8 @@ export default function AddressForm() {
                                     }
                                 );
                                 if (result && result.data != null) {
-                                    console.log("res", result);
+                                    toast.success("Address saved successfully!");
+
                                 } else {
                                     toast.error(result.data.message);
                                 }
@@ -235,7 +255,7 @@ export default function AddressForm() {
                                                         required
                                                         id="name"
                                                         name="name"
-                                                        label="Full Name"
+                                                        label="Receiver's Full Name"
                                                         fullWidth
                                                         autoComplete="given-name"
                                                         variant="standard"
@@ -281,7 +301,7 @@ export default function AddressForm() {
                                                     <TextField
                                                         id="additionalInfo"
                                                         name="additionalInfo"
-                                                        label="Para, Moholla, Way to go, Anything specific"
+                                                        label="Para, Moholla, Way To Go, Anything *"
                                                         fullWidth
                                                         autoComplete="additionalInfo"
                                                         value={values.additionalInfo}
